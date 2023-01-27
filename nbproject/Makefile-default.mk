@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.s
+SOURCEFILES_QUOTED_IF_SPACED=main.s config.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/config.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/config.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/config.o
 
 # Source Files
-SOURCEFILES=main.s
+SOURCEFILES=main.s config.c
 
 
 
@@ -95,7 +95,19 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ64GB002.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/98d1674fb2c78952fbe85c2293c0b9e9f70cf80c .generated_files/flags/default/4dfea4184ea9d925c7c2d2fec11ef6d40291c183
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/config.o.d 
+	@${RM} ${OBJECTDIR}/config.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  config.c  -o ${OBJECTDIR}/config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
+${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/9dab9a116a3d64ea253d081fe4951509264b304e .generated_files/flags/default/4dfea4184ea9d925c7c2d2fec11ef6d40291c183
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/config.o.d 
+	@${RM} ${OBJECTDIR}/config.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  config.c  -o ${OBJECTDIR}/config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
