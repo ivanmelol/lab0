@@ -1,12 +1,10 @@
-;hEsto es un comentario
+;Token de GITHUB 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
 .global _main ;INICIO 
 ;dentro del main establecer la configuracion
         
 _main:
         BCLR    TRISB, #0XA ;(configuracion) LIMPIAR EL BIT 10 DEL REGISTRO TRISB PARA CONFIGURARLO COMO SALIDA
         BCLR    TRISB, #0XB ;(configuracion)  LIMPIAR EL BIT 11 DEL REGSITRO TRISB PARA CONFIGURARLO COMO SALIDA       
-        BCLR    TRISB, #0XF ; pin rb15
-        BCLR    TRISB, #0XC ; PIN RB12
         MOV        #0X000, W0  ; MOVER EL VALOR 0 AL REGSITRO DE TABAJO W0 W0=0 
         MOV        W0, PORTB   ; MOVER EL VALOR QUE ESTA EN W0 (0) AL REGISTRO PORTB PARA COLOCAR TODOS LOS PINES DEL PUERTO B EN 0V
 
